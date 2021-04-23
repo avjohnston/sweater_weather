@@ -15,16 +15,20 @@ class WeatherService
     end 
     parse(response)
   end
+
+  def self.memo(lat, lon)
+    repsonse ||= self.get_weather(lat, lon)
+  end 
   
   def self.current_weather(lat, lon)
-    get_weather(lat, lon)[:current]
+    memo(lat, lon)[:current]
   end
 
   def self.hourly_weather(lat, lon)
-    get_weather(lat, lon)[:hourly].first(8)
+    memo(lat, lon)[:hourly].first(8)
   end 
 
   def self.daily_weather(lat, lon)
-    get_weather(lat, lon)[:daily].first(5)
+    memo(lat, lon)[:daily].first(5)
   end 
 end 

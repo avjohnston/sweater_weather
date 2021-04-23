@@ -24,6 +24,14 @@ RSpec.describe WeatherFacade, type: :model do
 
       expect(@current).to be_a(Hash)
       expect(@current.keys).to eq(result)
+
+      expect(@current).to_not have_key(:clouds)
+      expect(@current).to_not have_key([:pressure])
+      expect(@current).to_not have_key([:dew_point])
+      expect(@current).to_not have_key([:visibility])
+      expect(@current).to_not have_key([:wind_speed])
+      expect(@current).to_not have_key([:wind_degree])
+      expect(@current).to_not have_key([:rain])
     end 
 
     it '#hourly_attributes', :vcr do 
@@ -31,6 +39,18 @@ RSpec.describe WeatherFacade, type: :model do
       
       expect(@hourly.size).to eq(8)
       expect(@hourly[0].keys).to eq([:time, :temperature, :conditions, :icon])
+
+      expect(@hourly[0]).to_not have_key([:feels_like])
+      expect(@hourly[0]).to_not have_key([:pressure])
+      expect(@hourly[0]).to_not have_key([:humidity])
+      expect(@hourly[0]).to_not have_key([:dew_point])
+      expect(@hourly[0]).to_not have_key([:uvi])
+      expect(@hourly[0]).to_not have_key([:clouds])
+      expect(@hourly[0]).to_not have_key([:visibility])
+      expect(@hourly[0]).to_not have_key([:wind_speed])
+      expect(@hourly[0]).to_not have_key([:wind_deg])
+      expect(@hourly[0]).to_not have_key([:wind_gust])
+      expect(@hourly[0]).to_not have_key([:pop])
     end
     
     it '#daily_attributes', :vcr do 
@@ -47,6 +67,21 @@ RSpec.describe WeatherFacade, type: :model do
 
       expect(@daily.size).to eq(5)
       expect(@daily[0].keys).to eq(result)
+
+      expect(@daily[0]).to_not have_key([:moonrise])
+      expect(@daily[0]).to_not have_key([:moonset])
+      expect(@daily[0]).to_not have_key([:moon_phase])
+      expect(@daily[0]).to_not have_key([:feels_like])
+      expect(@daily[0]).to_not have_key([:pressure])
+      expect(@daily[0]).to_not have_key([:humidity])
+      expect(@daily[0]).to_not have_key([:dew_point])
+      expect(@daily[0]).to_not have_key([:wind_speed])
+      expect(@daily[0]).to_not have_key([:wind_deg])
+      expect(@daily[0]).to_not have_key([:weather])
+      expect(@daily[0]).to_not have_key([:clouds])
+      expect(@daily[0]).to_not have_key([:pop])
+      expect(@daily[0]).to_not have_key([:rain])
+      expect(@daily[0]).to_not have_key([:uvi])
     end 
 
     it '#temp_to_f' do 
