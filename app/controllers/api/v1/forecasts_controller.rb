@@ -1,6 +1,6 @@
 class Api::V1::ForecastsController < ApplicationController
   def show
-    if params[:location]
+    if params[:location] && params[:location] != ''
     @forecast = ForecastFacade.location_forecast(params[:location])
     @serial = ForecastSerializer.new(@forecast)
 

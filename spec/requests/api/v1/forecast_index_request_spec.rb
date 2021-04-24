@@ -65,5 +65,25 @@ RSpec.describe 'Api::V1::Forecast Index', type: :request do
         expect(json[:data][:attributes][:hourly_weather][0][:icon]).to eq('10d')
       end
     end 
+  end
+  
+  describe 'sad path' do 
+    it 'should return 400 for no params', :vcr do 
+      get api_v1_forecast_path
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('invalid parameters')
+    end
+    
+    it 'should return 400 for invalid params', :vcr do 
+      get api_v1_forecast_path, params: { location: '' }
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('invalid parameters')
+    end 
   end 
 end

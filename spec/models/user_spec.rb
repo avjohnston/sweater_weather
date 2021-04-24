@@ -10,10 +10,10 @@ RSpec.describe User, type: :model do
     @user = User.create(@data)
   end
 
-  describe 'instance_methods' do 
-    it '#default_api' do
-      expect(@user.default_api).to be_a(String)
-    end 
-  end
+  # describe 'instance_methods' do 
+  #   it '#default_api' do
+  #     expect(@user.default_api).to be_a(String)
+  #   end 
+  # end
   
 end
