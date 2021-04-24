@@ -11,12 +11,12 @@ def self.conn
     response = conn.get('/services/rest') do |f|
       f.params['method'] = 'flickr.photos.search'
       f.params['api_key'] = ENV['flickr_key']
-      f.params['text'] = text
+      f.params['text'] = text + 'skyline'
       f.params['per_page'] = 1
-      f.params['page'] = 1
       f.params['format'] = 'json'
       f.params['nojsoncallback'] = 1
     end 
+    return '22377206314' if parse(response)[:photos][:total] == '0'
     parse(response)[:photos][:photo][0][:id]
   end
 
@@ -28,7 +28,6 @@ def self.conn
       f.params['method'] = 'flickr.photos.getInfo'
       f.params['photo_id'] = get_id(text)
     end 
-    parse(response)
-    # [:photo][:urls][:url][0][:_content]
+    parse(response)[:photo]
   end
 end 
