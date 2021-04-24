@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.flickr.com/services/rest?api_key=03004ca1ef57038fab5e21968db1fccf&format=json&method=flickr.photos.search&nojsoncallback=1&per_page=1&text=denver,coskyline
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '261'
+      Connection:
+      - keep-alive
+      Date:
+      - Sat, 24 Apr 2021 17:14:39 GMT
+      Server:
+      - Apache/2.4.46 (Ubuntu)
+      Set-Cookie:
+      - ccc=%7B%22needsConsent%22%3Afalse%2C%22managed%22%3A0%2C%22changed%22%3A0%2C%22info%22%3A%7B%22cookieBlock%22%3A%7B%22level%22%3A0%2C%22blockRan%22%3A0%7D%7D%7D;
+        expires=Mon, 24-May-2021 17:14:39 GMT; Max-Age=2592000; path=/; domain=.flickr.com
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 38059ba65876500c040fb73e2cbaebf5.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - fPHF-ZNhaI2viIcgpSb_rkVDWg8qwfbiwY9Xw5sFEnytj6hy8TyOUQ==
+    body:
+      encoding: UTF-8
+      string: '{"photos":{"page":1,"pages":14,"perpage":1,"total":"14","photo":[{"id":"2710497796","owner":"29032250@N06","secret":"5e651e3c87","server":"3118","farm":4,"title":"Denver
+        Marriott City Center: Night Skyline","ispublic":1,"isfriend":0,"isfamily":0}]},"stat":"ok"}'
+  recorded_at: Sat, 24 Apr 2021 17:14:39 GMT
+recorded_with: VCR 6.0.0
