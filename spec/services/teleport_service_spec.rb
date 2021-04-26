@@ -6,6 +6,9 @@ RSpec.describe TeleportService, type: :model do
       @response = TeleportService.get_city_link('denver')
       
       expect(@response).to eq('https://api.teleport.org/api/cities/geonameid:5419384/')
+
+      @response2 = TeleportService.get_city_link('varen4734h')
+      expect(@response2).to eq([])
     end 
 
     it '#get_urban_area_link' do 

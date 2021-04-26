@@ -12,6 +12,7 @@ class TeleportService
       f.params['search'] = search
       f.params['limit'] = 1
     end
+    return [] if parse(response)['_embedded']['city:search-results'].empty?
     parse(response)['_embedded']['city:search-results'][0]['_links']['city:item']['href']
   end 
 
