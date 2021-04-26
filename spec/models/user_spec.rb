@@ -1,19 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before :each do
-    @data = {
-            "email": "whatever@example.com",
-            "password": "password",
-            "password_confirmation": "password"
-          }
-    @user = User.create(@data)
-  end
-
-  # describe 'instance_methods' do 
-  #   it '#default_api' do
-  #     expect(@user.default_api).to be_a(String)
-  #   end 
-  # end
-  
+  describe 'validations' do 
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email) }
+    it { should validate_presence_of(:password) }
+  end 
 end
