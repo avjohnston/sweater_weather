@@ -37,5 +37,14 @@ RSpec.describe 'Api::V1::Salaries Index', type: :request do
 
       expect(json[:error]).to eq('invalid parameters')
     end 
+
+    it 'should return 400 for an empty param' do 
+      get api_v1_salaries_path, params: { destination: '' }
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('invalid parameters')
+    end 
   end 
 end
