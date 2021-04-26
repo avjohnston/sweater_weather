@@ -7,28 +7,29 @@ class TeleportService
     JSON.parse(response.body)
   end 
 
-  def self.get_city(search)
-    response = conn.get('/api/cities/') do |f|
-      f.params['search'] = search
-      f.params['limit'] = 1
-    end
-    parse(response)['_embedded']['city:search-results'][0]['_links']['city:item']['href']
-  end 
+  def self.get_salary_link(destination)
+    response = conn.get("/api/urban_areas/slug%3A#{destination}/")
 
-  def self.get_city_info(search)
-    response = Faraday.get(get_city(search))
-    parse(response)
+    return [] if response.status != 200
+    parse(response)['_links']['ua:salaries']['href']
   end 
-
-  def self.get_urban_area(search)
-    response = conn.get('/api/urban_areas/')
-    parse(response)['_links']['ua:item'].find do |hash|
-      hash[:name] = search
-    end['href']
-  end 
-
-  def self.get_urban_area_info(search)
-    response = Faraday.get(get_urban_area(search))
-    parse(response)
+  
+  def self.get_salary_info(destination)
+    response = Faraday.get(get_salary_link(destination))
+    salaries = parse(response)['salaries']
+    final_jobs = []
+    jobs = ['Data Analyst', 'Data Scientist', 'Mobile Developer', 'QA Engineer', 'Sofware Engineer', 'Systems Administrator', 'Web Developer']
+    jobs.each do |job|
+      salaries.map do |salary|
+        if job == salary['job']['title']
+          final_jobs << {
+            title: salary['job']['title'],
+            min: sprintf("$%2.2f", salary['salary_percentiles']['percentile_25']),
+            max: sprintf("$%2.2f", salary['salary_percentiles']['percentile_75'])
+          }
+        end 
+      end 
+    end 
+    final_jobs
   end 
 end 

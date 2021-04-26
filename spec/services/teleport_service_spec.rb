@@ -2,19 +2,25 @@ require 'rails_helper'
 
 RSpec.describe TeleportService, type: :model do
   describe 'class methods' do 
-    it 'should return the city along with attributes', :vcr do 
-      @response = TeleportService.get_city_info('gilbert')
+    it '#get_salary_link' do 
+      @response = TeleportService.get_salary_link('denver')
+      expect(@response).to eq('https://api.teleport.org/api/urban_areas/slug:denver/salaries/')
+      
+      @response2 = TeleportService.get_salary_link('varen4734h')
+      expect(@response2).to eq([])
+    
+      @response3 = TeleportService.get_salary_link('')
+      expect(@response3).to eq([])
+    end
 
-    end 
+    it '#get_salary_info' do 
+      @response = TeleportService.get_salary_info('denver')
 
-    it '#get_urban_area', :vcr do 
-      @response = TeleportService.get_urban_area('aarhus')
-
-    end 
-
-    it '#get_urban_area_info', :vcr do 
-      @response = TeleportService.get_urban_area_info('buffalo')
-      require 'pry';binding.pry
+      expect(@response).to be_an(Array)
+      expect(@response.size).to eq(6)
+      expect(@response[0][:title]).to eq('Data Analyst')
+      expect(@response[0][:min]).to eq('$42878.34')
+      expect(@response[0][:max]).to eq('$62106.69')
     end 
   end 
 end
