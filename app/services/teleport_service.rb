@@ -7,28 +7,10 @@ class TeleportService
     JSON.parse(response.body)
   end 
 
-  # def self.get_city_link(search)
-  #   response = conn.get('/api/cities/') do |f|
-  #     f.params['search'] = search
-  #     f.params['limit'] = 1
-  #   end
-  #   return [] if parse(response)['_embedded']['city:search-results'].empty?
-  #   parse(response)['_embedded']['city:search-results'][0]['_links']['city:item']['href']
-  # end 
-
-  # def self.get_urban_area_link(search)
-  #   response = Faraday.get(get_city_link(search))
-  #   parse(response)["_links"]["city:urban_area"]["href"]
-  # end 
-  
-  # def self.get_salary_link(search)
-  #   response = Faraday.get(get_urban_area_link(search))
-  #   parse(response)['_links']['ua:salaries']['href']
-  # end 
-
   def self.get_salary_link(search)
     response = conn.get("/api/urban_areas/slug%3A#{search}/")
-    return [] if parse(response)['http_status_code']
+
+    return [] if response.status != 200
     parse(response)['_links']['ua:salaries']['href']
   end 
   
