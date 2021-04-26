@@ -24,9 +24,10 @@ RSpec.describe TeleportService, type: :model do
       @response = TeleportService.get_salary_info('denver')
 
       expect(@response).to be_an(Array)
+      expect(@response.size).to eq(6)
       expect(@response[0][:title]).to eq('Data Analyst')
-      expect(@response[0][:min]).to eq('$42,878.34')
-      expect(@response[0][:max]).to eq('$62,106.69')
+      expect(@response[0][:min]).to eq('$42878.34')
+      expect(@response[0][:max]).to eq('$62106.69')
     end 
   end 
 end
