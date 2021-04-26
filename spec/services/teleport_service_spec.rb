@@ -8,6 +8,9 @@ RSpec.describe TeleportService, type: :model do
       
       @response2 = TeleportService.get_salary_link('varen4734h')
       expect(@response2).to eq([])
+    
+      @response3 = TeleportService.get_salary_link('')
+      expect(@response3).to eq([])
     end
 
     it '#get_salary_info' do 
