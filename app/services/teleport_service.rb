@@ -21,14 +21,12 @@ class TeleportService
   end 
 
   def self.get_urban_area(search)
-    response = conn.get('/api/urban_areas/')
-    parse(response)['_links']['ua:item'].find do |hash|
-      hash[:name] = search
-    end['href']
+    response = Faraday.get(get_city_info(search)["_links"]["city:urban_area"]["href"])
+    parse(response)
   end 
 
-  def self.get_urban_area_info(search)
-    response = Faraday.get(get_urban_area(search))
+  def self.get_salary_info(search)
+    response = Faraday.get(get_urban_area(search)['_links']['ua:salaries']['href'])
     parse(response)
   end 
 end 

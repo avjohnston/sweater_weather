@@ -1,0 +1,3 @@
+class Salary
+
+end 

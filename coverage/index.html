@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-04-25T16:46:00-06:00">2021-04-25T16:46:00-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-04-26T09:23:35-06:00">2021-04-26T09:23:35-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.22
+         2.25
        </span>
     </span> hits/line
     )
@@ -260,11 +260,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#deece7ade9999993c59557ac050e397b0fcc8307" class="src_link" title="app/services/teleport_service.rb">app/services/teleport_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">35</td>
-            <td class="cell--number">20</td>
-            <td class="cell--number">20</td>
+            <td class="cell--number">47</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">19</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.45</td>
+            <td class="cell--number">2.26</td>
             
           </tr>
         
@@ -403,9 +403,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#d017ed5cee32887010416aa07a20331f6723e480" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">10</td>
-            <td class="cell--number">7</td>
-            <td class="cell--number">7</td>
+            <td class="cell--number">11</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">8</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -3653,8 +3653,8 @@
     
 
     <div class="t-line-summary">
-      <b>20</b> relevant lines.
-      <span class="green"><b>20</b> lines covered</span> and
+      <b>19</b> relevant lines.
+      <span class="green"><b>19</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3732,8 +3732,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="7">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="9" data-linenumber="7">
+            <span class="hits">9</span>
             
 
             
@@ -3776,8 +3776,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="11">
+            <span class="hits">3</span>
             
 
             
@@ -3787,8 +3787,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="12">
+            <span class="hits">3</span>
             
 
             
@@ -3798,8 +3798,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="13">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="13">
+            <span class="hits">3</span>
             
 
             
@@ -3820,8 +3820,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="15">
+            <span class="hits">3</span>
             
 
             
@@ -3864,8 +3864,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="19">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="19">
+            <span class="hits">3</span>
             
 
             
@@ -3875,8 +3875,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="20">
+            <span class="hits">3</span>
             
 
             
@@ -3925,7 +3925,7 @@
 
             
 
-            <code class="ruby">    response = conn.get(&#39;/api/urban_areas/&#39;)</code>
+            <code class="ruby">    response = Faraday.get(get_city_info(search)[&quot;_links&quot;][&quot;city:urban_area&quot;][&quot;href&quot;])</code>
           </li>
         </div>
       
@@ -3936,18 +3936,18 @@
 
             
 
-            <code class="ruby">    parse(response)[&#39;_links&#39;][&#39;ua:item&#39;].find do |hash|</code>
+            <code class="ruby">    parse(response)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="26">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="26">
+            
             
 
             
 
-            <code class="ruby">      hash[:name] = search</code>
+            <code class="ruby">  end </code>
           </li>
         </div>
       
@@ -3958,7 +3958,7 @@
 
             
 
-            <code class="ruby">    end[&#39;href&#39;]</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -3969,7 +3969,7 @@
 
             
 
-            <code class="ruby">  end </code>
+            <code class="ruby">  # def self.get_urban_area_info(search)</code>
           </li>
         </div>
       
@@ -3980,34 +3980,67 @@
 
             
 
+            <code class="ruby">  #   response = Faraday.get(get_urban_area(search)[&#39;_links&#39;][&#39;ua:salaries&#39;][&#39;href&#39;])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">  #   parse(response)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">  # end </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
+          <li class="covered" data-hits="1" data-linenumber="33">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def self.get_urban_area_info(search)</code>
+            <code class="ruby">  def self.get_salary_info(search)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="31">
+          <li class="covered" data-hits="1" data-linenumber="34">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    response = Faraday.get(get_urban_area(search))</code>
+            <code class="ruby">    response = Faraday.get(get_urban_area(search)[&#39;_links&#39;][&#39;ua:salaries&#39;][&#39;href&#39;])</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
+          <li class="covered" data-hits="1" data-linenumber="35">
             <span class="hits">1</span>
             
 
@@ -4018,7 +4051,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="33">
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 
@@ -4029,7 +4062,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
+          <li class="never" data-hits="" data-linenumber="37">
             
             
 
@@ -4040,7 +4073,106 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="never" data-hits="" data-linenumber="38">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="39">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="40">
+            
+            
+
+            
+
+            <code class="ruby">  # def self.get_urban_area(search)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="41">
+            
+            
+
+            
+
+            <code class="ruby">  #   response = conn.get(&#39;/api/urban_areas/&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby">  #   parse(response)[&#39;_links&#39;][&#39;ua:item&#39;].find do |hash|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="43">
+            
+            
+
+            
+
+            <code class="ruby">  #     hash[:name] = search</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="44">
+            
+            
+
+            
+
+            <code class="ruby">  #   end[&#39;href&#39;]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">  # end </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="47">
             
             
 
@@ -6564,8 +6696,8 @@
     
 
     <div class="t-line-summary">
-      <b>7</b> relevant lines.
-      <span class="green"><b>7</b> lines covered</span> and
+      <b>8</b> relevant lines.
+      <span class="green"><b>8</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -6654,13 +6786,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="8">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="8">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end </code>
+            
+
+            <code class="ruby">      get &#39;salaries&#39;, to: &#39;salaries#index&#39;</code>
           </li>
         </div>
       
@@ -6671,12 +6803,23 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end </code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
@@ -12378,7 +12521,7 @@
 
             
 
-            <code class="ruby">    it &#39;#get_urban_area_info&#39;, :vcr do </code>
+            <code class="ruby">    it &#39;get_salary_info&#39; do </code>
           </li>
         </div>
       
@@ -12389,7 +12532,7 @@
 
             
 
-            <code class="ruby">      @response = TeleportService.get_urban_area_info(&#39;buffalo&#39;)</code>
+            <code class="ruby">      @response = TeleportService.get_salary_info(&#39;buffalo&#39;)</code>
           </li>
         </div>
       

@@ -12,8 +12,8 @@ RSpec.describe TeleportService, type: :model do
 
     end 
 
-    it '#get_urban_area_info', :vcr do 
-      @response = TeleportService.get_urban_area_info('buffalo')
+    it 'get_salary_info' do 
+      @response = TeleportService.get_salary_info('buffalo')
       require 'pry';binding.pry
     end 
   end 
