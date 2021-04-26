@@ -46,5 +46,19 @@ RSpec.describe WeatherService, type: :model do
       expect(response[0][:weather][0][:description]).to eq('light rain')
       expect(response[0][:weather][0][:icon]).to eq('10d')
     end
+
+    it '#hourly', :vcr do 
+      response = WeatherService.hourly(39.738453, -104.984853, 5555)
+
+      expect(response[:temp]).to be_a(Float)
+      expect(response[:weather][0].keys).to eq([:id, :main, :description, :icon])
+    end
+    
+    it '#daily', :vcr do
+      response = WeatherService.daily(39.738453, -104.984853, 5555555)
+
+      expect(response[:temp][:day]).to be_a(Float)
+      expect(response[:weather][0].keys).to eq([:id, :main, :description, :icon])
+    end 
   end
 end

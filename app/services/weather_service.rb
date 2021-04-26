@@ -17,7 +17,7 @@ class WeatherService
   end
 
   def self.memo(lat, lon)
-    repsonse ||= self.get_weather(lat, lon)
+    response ||= self.get_weather(lat, lon)
   end 
   
   def self.current_weather(lat, lon)
@@ -30,5 +30,17 @@ class WeatherService
 
   def self.daily_weather(lat, lon)
     memo(lat, lon)[:daily].first(5)
+  end 
+
+  def self.hourly(lat, lon, time)
+    WeatherService.memo(lat, lon)[:hourly].find_all do |hour|
+      hour[:dt] <= Time.now.to_i + time
+    end.last
+  end 
+
+  def self.daily(lat, lon, time)
+    WeatherService.memo(lat, lon)[:daily].find_all do |hour|
+      hour[:dt] <= Time.now.to_i + time
+    end.last
   end 
 end 
