@@ -13,7 +13,7 @@ class Api::V1::SalariesController < ApplicationController
   private 
 
   def valid_destination?(search)
-    return false if TeleportService.get_city_link(search).empty?
+    return false if TeleportService.get_salary_link(search).empty?
     true
   end 
 end 

@@ -2,25 +2,27 @@ require 'rails_helper'
 
 RSpec.describe TeleportService, type: :model do
   describe 'class methods' do 
-    it '#get_city' do 
-      @response = TeleportService.get_city_link('denver')
+    # it '#get_city' do 
+    #   @response = TeleportService.get_city_link('denver')
       
-      expect(@response).to eq('https://api.teleport.org/api/cities/geonameid:5419384/')
+    #   expect(@response).to eq('https://api.teleport.org/api/cities/geonameid:5419384/')
 
-      @response2 = TeleportService.get_city_link('varen4734h')
-      expect(@response2).to eq([])
-    end 
+    #   @response2 = TeleportService.get_city_link('varen4734h')
+    #   expect(@response2).to eq([])
+    # end 
 
-    it '#get_urban_area_link' do 
-      @response = TeleportService.get_urban_area_link('denver')
+    # it '#get_urban_area_link' do 
+    #   @response = TeleportService.get_urban_area_link('denver')
 
-      expect(@response).to eq('https://api.teleport.org/api/urban_areas/slug:denver/')
-    end 
+    #   expect(@response).to eq('https://api.teleport.org/api/urban_areas/slug:denver/')
+    # end 
 
     it '#get_salary_link' do 
       @response = TeleportService.get_salary_link('denver')
-
       expect(@response).to eq('https://api.teleport.org/api/urban_areas/slug:denver/salaries/')
+
+      @response2 = TeleportService.get_salary_link('varen4734h')
+      expect(@response2).to eq([])
     end 
 
     it '#get_salary_info' do 
