@@ -13,6 +13,7 @@ class RoadTripService
       f.params['from'] = start_dest
       f.params['to'] = end_dest
     end
+    return [] if parse(response)[:route][:routeError][:errorCode] == 2
     parsed ||= parse(response)[:route]
   end
 
