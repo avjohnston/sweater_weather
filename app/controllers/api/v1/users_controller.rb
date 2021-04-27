@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
+      @user.update_api_key
       @serial = UsersSerializer.new(@user)
 
       render json: @serial, status: 201
