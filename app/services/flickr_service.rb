@@ -16,7 +16,7 @@ def self.conn
       f.params['format'] = 'json'
       f.params['nojsoncallback'] = 1
     end 
-    return '22377206314' if parse(response)[:photos][:total] == '0'
+    return '22377206314' if parse(response)[:photos][:total] == '0' || text == ''
     parse(response)[:photos][:photo][0][:id]
   end
 

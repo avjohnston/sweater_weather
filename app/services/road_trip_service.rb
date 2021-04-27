@@ -13,7 +13,7 @@ class RoadTripService
       f.params['from'] = start_dest
       f.params['to'] = end_dest
     end
-    return [] if parse(response)[:route][:routeError][:errorCode] == 2
+    return [false, 'impossible route'] if !parse(response)[:info][:messages].empty?
     parsed ||= parse(response)[:route]
   end
 
@@ -27,11 +27,21 @@ class RoadTripService
 
   def self.travel_info(start_dest, end_dest)
     info = get_travel_info(start_dest, end_dest)
-    {
-      travel_time: info[:time],
-      start_dest: start_dest,
-      end_dest: end_dest,
-      location: info[:locations][1][:displayLatLng]
-    }
+
+    if info.class == Array
+      {
+        travel_time: 'impossible',
+        start_dest: start_dest,
+        end_dest: end_dest,
+        location: ''
+      }
+    else 
+      {
+        travel_time: info[:time],
+        start_dest: start_dest,
+        end_dest: end_dest,
+        location: info[:locations][1][:displayLatLng]
+      }
+    end 
   end 
 end 
