@@ -28,6 +28,6 @@ RSpec.describe ForecastFacade, type: :model do
       expect(@forecast.hourly_weather).to be_an(Array)
       expect(@forecast.hourly_weather.size).to eq(8)
       expect(@forecast.hourly_weather[0].keys).to eq([:time, :temperature, :conditions, :icon])
-    end 
+    end
   end 
 end
