@@ -92,8 +92,8 @@ For any changes in versioning, please check back here.
 ## Authors
 
   - **Andrew Johnston** - *Sole Developer* -
-    [My Github](https://github.com/avjohnston)
-    [My LinkedIn](www.linkedin.com/in/avjohnston)
+  - <img src="https://user-images.githubusercontent.com/46826902/114424033-fb538b00-9b74-11eb-884d-429d4ad4132d.png">[My Github](https://github.com/avjohnston)
+  - <img src="https://user-images.githubusercontent.com/46826902/114425392-43bf7880-9b76-11eb-811a-d3255ced4b3b.png">[My LinkedIn](www.linkedin.com/in/avjohnston)
 
 ## Acknowledgments
 
