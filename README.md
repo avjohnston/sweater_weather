@@ -74,15 +74,15 @@ This application was built utilizing many different gems and frameworks:
 
 ### Post Users
 #### `POST '/users'`
-- Required header parameters (application/json): "email", "password", "password_confirmation"
+- Required header parameters as application/json and parameters: "email", "password", "password_confirmation"
 
 ### Post Sessions
 #### `POST '/sessions'`
-- Required header parameters (application/json): "email", "password"
+- Required header parameters as application/json and parameters: "email", "password"
 
 ### Post Road Trip
 #### `POST '/road_trip'`
-- Required header parameters (application/json): "origin", "destination", "api_key"
+- Required header parameters as application/json and parameters: "origin", "destination", "api_key"
 
 ## Versioning
 
