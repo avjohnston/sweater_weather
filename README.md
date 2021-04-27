@@ -37,7 +37,7 @@ To run the tests, follow these commands:
 
 Rspec, VCR, ShouldaMatchers, Capybara, and SimpleCov were all used.
 
-The full suite is currently at 100% coverage for 723 lines of code. This application is thoroughly tested through happy path, sad path and edge cases. Certain sad paths and edge cases include:
+The full suite is currently at 100% coverage for 798 lines of code. This application is thoroughly tested through happy path, sad path and edge cases. Certain sad paths and edge cases include:
 
 - Getting an invalid parameter (empty string, no parameters, invalid city, invalid state, invalid latitude, invalid longitude, etc)
 - Routing a trip that can't be driven
