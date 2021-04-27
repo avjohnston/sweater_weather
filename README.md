@@ -50,6 +50,7 @@ This application was built utilizing many different gems and frameworks:
 - Ruby
 - Rails
 - Rspec
+- Postman
 - Active Record
 - Pry
 - Fast Json API
