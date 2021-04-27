@@ -5,7 +5,7 @@ Sweater Weather is the back-end side of a Service-Oriented Architecture applicat
 ## Summary
 
   - [Getting Started](#getting-started)
-  - [Running the tests](#running-the-tests)
+  - [Running the Tests](#running-the-tests)
   - [Built With](#built-with)
   - [Endpoints](#endpoints)
   - [Versioning](#versioning)
