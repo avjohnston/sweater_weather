@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Api::V1::RoadTrips Create', type: :request do
   before :each do 
-    @user = User.create(email: 'email@email.com', password: 'password', api_key: 'nsFDAw34VDy723wu')
+    @user = User.create(email: 'email@email.com', password: 'password')
+    @user.update_api_key
   end 
 
   describe 'happy path' do 
@@ -67,6 +68,72 @@ RSpec.describe 'Api::V1::RoadTrips Create', type: :request do
       expect(json[:data][:attributes][:end_city]).to eq('London, Uk')
       expect(json[:data][:attributes][:travel_time]).to eq('impossible')
       expect(json[:data][:attributes][:weather_at_eta]).to eq({})
+    end
+
+    it 'should return 400 for missing destination', :vcr do 
+      invalid_body = {
+                      "origin": "denver,co",
+                      "api_key": @user.api_key
+                    }
+
+      post api_v1_road_trip_path, params: invalid_body
+      request.headers['Content-Type'] = 'application/json'
+      request.headers['Accept'] = 'application/json'
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('both origin and destination must be present')
+    end 
+
+    it 'should return 400 for empty destination', :vcr do 
+      invalid_body = {
+                      "origin": "denver,co",
+                      "destination": "",
+                      "api_key": @user.api_key
+                    }
+
+      post api_v1_road_trip_path, params: invalid_body
+      request.headers['Content-Type'] = 'application/json'
+      request.headers['Accept'] = 'application/json'
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('both origin and destination must be present')
+    end
+
+    it 'should return 400 for missing origin', :vcr do 
+      invalid_body = {
+                      "destination": "denver,co",
+                      "api_key": @user.api_key
+                    }
+
+      post api_v1_road_trip_path, params: invalid_body
+      request.headers['Content-Type'] = 'application/json'
+      request.headers['Accept'] = 'application/json'
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('both origin and destination must be present')
+    end 
+
+    it 'should return 400 for empty origin', :vcr do 
+      invalid_body = {
+                      "origin": "",
+                      "destination": "denver,co",
+                      "api_key": @user.api_key
+                    }
+
+      post api_v1_road_trip_path, params: invalid_body
+      request.headers['Content-Type'] = 'application/json'
+      request.headers['Accept'] = 'application/json'
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('both origin and destination must be present')
     end
   end 
 end

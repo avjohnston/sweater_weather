@@ -11,7 +11,7 @@ RSpec.describe 'Api::V1::Forecast Index', type: :request do
       expect(json[:data]).to be_a(Hash)
       expect(json[:data][:type]).to eq('forecast')
       expect(json[:data][:attributes]).to be_an(Hash)
-      expect(json[:data][:attributes].keys).to eq([:id, :current_weather, :daily_weather, :hourly_weather])
+      expect(json[:data][:attributes].keys).to eq([:current_weather, :daily_weather, :hourly_weather])
       expect(json[:data][:attributes][:current_weather].keys.count).to eq(10)
     end 
 

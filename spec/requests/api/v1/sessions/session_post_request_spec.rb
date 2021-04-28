@@ -58,5 +58,35 @@ RSpec.describe 'Api::V1::Sessions Create', type: :request do
 
       expect(json[:error]).to eq('invalid credentials')
     end 
+
+    it 'should return 400 given no password' do 
+      invalid_body = {
+                      "email": "whatever@example.com"
+                    }
+        
+      post api_v1_sessions_path, params: invalid_body
+      request.headers['Content-Type'] = 'application/json'
+      request.headers['Accept'] = 'application/json'
+      
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('invalid parameters')
+    end 
+
+    it 'should return 400 given no email' do 
+      invalid_body = {
+                      "password": "password123"
+                    }
+        
+      post api_v1_sessions_path, params: invalid_body
+      request.headers['Content-Type'] = 'application/json'
+      request.headers['Accept'] = 'application/json'
+      
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(400)
+
+      expect(json[:error]).to eq('invalid parameters')
+    end 
   end 
 end

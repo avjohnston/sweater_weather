@@ -22,6 +22,27 @@ RSpec.describe RoadTripFacade, type: :model do
       expect(@response.travel_time).to eq('impossible')
       expect(@response.weather_at_eta).to eq({})
     end
+
+    it '#road_trip_object sad path unreadable', :vcr do 
+      @response = RoadTripFacade.road_trip_object('zvcsdewt34', 'denver')
+
+      expect(@response).to be_a(RoadTrip)
+      expect(@response.end_city).to eq('Denver')
+      expect(@response.start_city).to eq('Zvcsdewt34')
+      expect(@response.travel_time).to eq('impossible')
+      expect(@response.weather_at_eta).to eq({})
+    end
+
+    it '#road_trip_object sad path unreadable end destination', :vcr do 
+      @response = RoadTripFacade.road_trip_object('denver', 'vsr435gf')
+
+      expect(@response).to be_a(RoadTrip)
+      expect(@response.end_city).to eq('Vsr435gf')
+      expect(@response.start_city).to eq('Denver')
+      expect(@response.travel_time).to eq('05:36:04')
+      expect(@response.weather_at_eta[:temperature][0..1].to_f).to be_between(-20, 110)
+      expect(@response.weather_at_eta[:conditions]).to be_a(String)
+    end
     
     it '#weather_info', :vcr do 
       @response = RoadTripFacade.weather_info('anchorage', 'denver')
