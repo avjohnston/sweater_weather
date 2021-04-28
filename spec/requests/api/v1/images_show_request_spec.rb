@@ -34,5 +34,14 @@ RSpec.describe 'Api::V1::Images Show', type: :request do
 
       expect(json[:data][:attributes][:image][:image_url]).to eq('https://www.flickr.com/photos/captions_by_nica/22377206314/')
     end 
+
+    it 'an empty parameter should still return 200 with a default pic', :vcr do 
+      get api_v1_backgrounds_path, params: { location: '' }
+
+      json = JSON.parse(response.body, symbolize_names: true)
+      expect(response).to have_http_status(200)
+
+      expect(json[:data][:attributes][:image][:image_url]).to eq('https://www.flickr.com/photos/captions_by_nica/22377206314/')
+    end
   end 
 end

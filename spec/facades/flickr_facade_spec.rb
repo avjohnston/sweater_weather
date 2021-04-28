@@ -35,4 +35,4 @@ RSpec.describe FlickrFacade, type: :model do
       expect(@image.image[:credit][:author]).to eq('(Fieger Photography) Captions by Nica...')
     end
   end 
-end 
+end

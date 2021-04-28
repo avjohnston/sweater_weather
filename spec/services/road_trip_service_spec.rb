@@ -58,4 +58,3 @@ RSpec.describe RoadTripService, type: :model do
     end 
   end
 end
-

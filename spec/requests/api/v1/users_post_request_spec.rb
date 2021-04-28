@@ -21,7 +21,7 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
       expect(json[:data][:attributes][:email]).to eq('whatever@example.com')
       expect(json[:data][:attributes][:api_key]).to be_a(String)
     end 
-  end 
+  end
 
   describe 'sad path' do 
     it 'it should return 400 with error email already exists' do 
@@ -92,6 +92,6 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
       expect(response).to have_http_status(400)
 
       expect(json[:error]).to eq(["Password confirmation doesn't match Password"])
-    end 
+    end
   end 
 end
