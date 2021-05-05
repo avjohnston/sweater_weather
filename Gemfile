@@ -28,6 +28,8 @@ gem 'fast_jsonapi'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faraday'
 gem 'json'
+gem 'rspec_junit_formatter'
+
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
