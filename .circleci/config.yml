@@ -6,10 +6,6 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.3-stretch-node
-    environment:
-          POSTGRES_USER: avjohnston
-          POSTGRES_DB: sweater_weather_test
-          POSTGRES_PASSWORD: "And1220!"
     executor: ruby/default
     steps:
       - checkout
