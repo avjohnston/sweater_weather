@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Api::V1::Sessions Create', type: :request do
   before :each do 
-    @user = User.create(email: 'whatever@example.com', password: 'password')
+    @user = User.create(email: 'whatever@example.com', password: 'password', password_confirmation: 'password')
   end 
 
   describe 'happy path' do 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Api::V1::RoadTrips Create', type: :request do
   before :each do 
-    @user = User.create(email: 'email@email.com', password: 'password')
+    @user = User.create(email: 'email2@email.com', password: 'password', password_confirmation: 'password')
     @user.update_api_key
   end 
 
