@@ -34,7 +34,7 @@ RSpec.describe 'Api::V1::Forecast Index', type: :request do
         expect(json[:data][:attributes][:current_weather][:icon]).to be_a(String)
       end
 
-      
+
     end 
 
     it 'should return daily weather all correctly formatted' do 
@@ -62,7 +62,7 @@ RSpec.describe 'Api::V1::Forecast Index', type: :request do
         expect(response).to have_http_status(200)
 
         expect(json[:data][:attributes][:hourly_weather][0][:time]).to be_a(String)
-        expect(json[:data][:attributes][:hourly_weather][0][:temperature]).to eq(51.53)
+        expect(json[:data][:attributes][:hourly_weather][0][:temperature]).to be_a(Float)
         expect(json[:data][:attributes][:hourly_weather][0][:conditions]).to be_a(String)
         expect(json[:data][:attributes][:hourly_weather][0][:icon]).to be_a(String)
       end
