@@ -1,28 +1,28 @@
 version: 2.1
 orbs:
   ruby: circleci/ruby@0.1.2 
-
 jobs:
   build:
+    working_directory: ~/whether_sweater
     docker:
-      - image: circleci/ruby:2.5.3-stretch-node
-    environment:
-        POSTGRES_USER: andrewj
-        POSTGRES_DB: sweater_weather_test
-        POSTGRES_PASSWORD: And1220!
-    executor: ruby/default
+      - image: circleci/ruby:2.5.3
+        environment:
+          PGHOST: localhost
+          PGUSER: sweater_weather
+          RAILS_ENV: test
+      - image: postgres:13.2
+        environment:
+          POSTGRES_USER: sweater_weather
+          POSTGRES_DB: sweater_weather_test
+          POSTGRES_PASSWORD: "POSTGRES_HOST_AUTH_METHOD=trust"
     steps:
       - checkout
       - run:
-          name: Which bundler?
+          name: whether_sweater
           command: bundle -v
       - ruby/bundle-install
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-      - run: mkdir ~/rspec
-      - run:
-          command: bundle exec rspec --format progress --format RspecJunitFormatter -o ~/rspec/rspec.xml
-          when: always
-      - store_test_results:
-          path: ~/rspec
-          default: &default
-      
+      - checkout
+      - run: bundle install --path vendor/bundle
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run: bundle exec rake db:setup
+      - run: bundle exec rspec
